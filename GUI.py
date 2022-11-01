@@ -97,9 +97,11 @@ class App():
         self.updateImage(playerHand=playerHand, cpuHand=cpuHand)
 
         # Update result Text to tell who won
-
-        # First check if both are equal
-        if playerHand == cpuHand:
+        #There is a case when first start and player doesn't click on a radio button
+        if playerHand is None:
+            self.result.config(text="Please pick a hand to throw.")
+        # Now check if both are equal
+        elif playerHand == cpuHand:
             self.result.config(text="Tie")
         # If not equal, then figure out the winner.
         elif playerHand > cpuHand:
